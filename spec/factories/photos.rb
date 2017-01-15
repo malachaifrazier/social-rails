@@ -1,7 +1,7 @@
 require 'factory_girl'
 
 FactoryGirl.define do
-  factory :photos do
+  factory :photo do
 
   end
 end

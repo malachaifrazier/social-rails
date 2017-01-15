@@ -1,7 +1,7 @@
 require 'factory_girl'
 
 FactoryGirl.define do
-  factory :authentications do
+  factory :authentication do
     uid "MyString"
     provider "MyString"
     oauth_token "MyString"
