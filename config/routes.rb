@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts
   resources :photo_albums
+  resources :posts,    except: [:new, :index]
   resources :events,   except: [:edit, :update]
   resources :comments, only: [:create, :destroy]
   resources :photos,   only: [:create, :destroy]
