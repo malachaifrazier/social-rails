@@ -19,8 +19,6 @@ class PhotoAlbum < ActiveRecord::Base
   include PublicActivity::Model
   tracked only: [:create], owner: proc { |_controller, model| model.user }
 
-  default_scope -> { order('created_at DESC') }
-
   self.per_page = 10
 
   extend FriendlyId

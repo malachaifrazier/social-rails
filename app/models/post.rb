@@ -19,8 +19,6 @@ class Post < ActiveRecord::Base
 
   tracked only: [:create], owner: proc { |_controller, model| model.user }
 
-  default_scope -> { order('created_at DESC') }
-
   auto_html_for :content do
     image
     youtube(width: 400, height: 250, autoplay: true)
