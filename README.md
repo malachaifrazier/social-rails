@@ -12,24 +12,17 @@ Do you want to see it in action? Here is a working version deployed to heroku [h
 Forked from the awesome [socify](https://github.com/sudharti/socify).
 social-rails is an open source social networking platform written in Ruby on Rails. Here is the blog post that started this project: [How to build a social network using Rails](https://medium.com/@sudharshanmuralidharaniyer/eb31da569233).
 
-### UPDATE
-
-Since my cloudinary free tier hit a bandwidth overload. So had to switch to AWS. If you plan on deploying to production please set the AWS key and secret as environment variables. Or you can checkout the older version which uses cloudinary 
-https://github.com/sudharti/social-rails/tree/930b2f7c6a6eb6b442189dc6237765dbf16d461c
-
-### UPDATE #2
-
-Updated the Rails version to 5.0. Thanks to [@briankung](https://github.com/briankung) for the Pull Request. There are some more things to be upgraded which will be done shortly. Refer this for the list of changes to be done https://hashrocket.com/blog/posts/how-to-upgrade-to-rails-5.
-
-### What it uses?
-
+### Some of what are we using:
 * [Ruby on Rails](https://github.com/rails/rails)
 * [Bootstrap](https://github.com/twbs/bootstrap-sass)
 * [Devise](https://github.com/plataformatec/devise)
 * [Public Activity](https://github.com/chaps-io/public_activity)
+* [Pry Rails](https://github.com/rweng/pry-rails)
+* [Rspec Rails](https://github.com/rspec/rspec-rails)
+* [PostgreSQL](https://rubygems.org/gems/pg/versions/0.18.4)
 
 
-### How do I get set up?
+### Getting started:
 
 To set it up on your local machine here is what you need to do. Install Ruby & Rails. Clone this repo using the following command:
 
@@ -46,20 +39,26 @@ bundle install
 Run Migrations:
 
 ```
-rake db:migrate
+bundle exec rake db:setup --trace
 ```
 
-Run rails using
+Run Specs:
 
 ```
-rails server
+bundle exec rspec
+```
+
+Run Rails locally:
+
+```
+bundle exec rails s
 ```
 
 ### Populate Mock data
 To test the app with mock data by running the following rake task:
 
 ```
-rake fill:data
+bundle exec rake fill:data --trace
 ```
 
 This will create records with values from faker & populator gems. Also here are the test user credentials:
@@ -78,7 +77,7 @@ This will create records with values from faker & populator gems. Also here are 
 ### Pull Requests
 
 * Fork this repo
-* Make changes to code
+* Make changes to code & cover your changes with test coverage!
 * Send Pull Request
 
 ### Issues
