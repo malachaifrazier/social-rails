@@ -20,7 +20,7 @@ gem 'omniauth-google-oauth2', '~> 0.4.1' #'~> 0.3.0'
 gem 'auto_html',              '~> 2.0'   # '~>1.6.4'
 
 gem 'pg'
-gem 'puma'
+gem 'thin'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'jquery-atwho-rails' # Used for auto complete mentions/emojis
