@@ -41,9 +41,9 @@ class UsersController < ApplicationController
   end
 
   def set_password
-    @user.password = params[:password]
+    @user.password              = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-    @user.profile_complete = true
+    @user.profile_complete      = true
     if @user.save
       sign_in(@user)
       redirect_to root_path

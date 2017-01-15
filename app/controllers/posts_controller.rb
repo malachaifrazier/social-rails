@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def show
-    @comments = @post.comments.all
+    @comments = @post.comments.order('created_at DESC')
   end
 
   def create
