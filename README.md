@@ -1,10 +1,14 @@
+[![Heroku](http://heroku-badge.herokuapp.com/?app=social-railsapp&style=flat)](http://social-railsapp.herokuapp.com)
+
+[![Code Climate](https://codeclimate.com/github/malachaifrazier/social-rails/badges/gpa.svg)](https://codeclimate.com/github/malachaifrazier/social-rails)
+
+[![Issue Count](https://codeclimate.com/github/malachaifrazier/social-rails/badges/issue_count.svg)](https://codeclimate.com/github/malachaifrazier/social-rails)
+
+Do you want to see it in action? Here is a working version deployed to heroku [http://social-railsapp.herokuapp.com](http://social-railsapp.herokuapp.com)
+
 ## social-rails
 Forked from the awesome [socify](https://github.com/sudharti/socify).
 social-rails is an open source social networking platform written in Ruby on Rails. Here is the blog post that started this project: [How to build a social network using Rails](https://medium.com/@sudharshanmuralidharaniyer/eb31da569233).
-
-[![Heroku](http://heroku-badge.herokuapp.com/?app=social-railsapp&style=flat)](http://social-railsapp.herokuapp.com)
-
-Do you want to see it in action? Here is a working version deployed to heroku [http://social-railsapp.herokuapp.com](http://social-railsapp.herokuapp.com)
 
 ### UPDATE
 
