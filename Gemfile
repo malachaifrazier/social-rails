@@ -17,7 +17,7 @@ gem 'will_paginate',  '~> 3.1', '>= 3.1.5'
 gem 'counter_culture',        '~> 1.1', '>= 1.1.1'
 gem 'acts_as_votable',        '~> 0.10.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1' #'~> 0.3.0'
-gem 'auto_html',              '~> 2.0'   # '~>1.6.4'
+gem 'auto_html',              '~>1.6.4' # https://github.com/dejan/auto_html/issues/170#issuecomment-179457987
 
 gem 'pg'
 gem 'thin'
