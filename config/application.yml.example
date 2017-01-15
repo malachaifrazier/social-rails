@@ -1,0 +1,19 @@
+# Add configuration values here, as shown below.
+
+defaults: &defaults
+  app_name: "SocialRails"
+  domain: "http://www.shortjab.com"
+  bucket: "SocialRails"
+  access_key_id: "nananana"
+  secret_access_key: "nanananan"
+
+  facebook_key: "nananana"
+  facebook_secret: "nanananan"
+  google_id: "nananana"
+  google_secret: "nanananan"
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -42,6 +42,7 @@ gem 'simple_form'
 gem 'dropzonejs-rails'
 gem 'mini_magick'
 gem 'faker'
+gem 'figaro'
 
 group :development do
   gem 'letter_opener'
@@ -60,10 +61,12 @@ group :production do
 end
 
 group :test do
-  gem 'database_cleaner'
-  gem 'factory_girl_rails'
   gem 'simplecov',        require: false
   gem 'shoulda-matchers', require: false
+
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+
   gem 'rspec_candy',              '~> 0.4.1'
   gem 'rspec-rails',              '~> 3.5', '>= 3.5.2'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.1'
