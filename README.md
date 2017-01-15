@@ -1,15 +1,15 @@
-## Socify
+## social-rails
+Forked from the awesome [socify](https://github.com/sudharti/socify).
+social-rails is an open source social networking platform written in Ruby on Rails. Here is the blog post that started this project: [How to build a social network using Rails](https://medium.com/@sudharshanmuralidharaniyer/eb31da569233).
 
-Socify is an open source social networking platform written in Ruby on Rails. Here is the blog post: [How to build a social network using Rails](https://medium.com/@sudharshanmuralidharaniyer/eb31da569233).
+[![Heroku](http://heroku-badge.herokuapp.com/?app=social-railsapp&style=flat)](http://social-railsapp.herokuapp.com)
 
-[![Heroku](http://heroku-badge.herokuapp.com/?app=socifyapp&style=flat)](http://socifyapp.herokuapp.com)
-
-Do you want to see it in action? Here is a working version deployed to heroku [http://socifyapp.herokuapp.com](http://socifyapp.herokuapp.com)
+Do you want to see it in action? Here is a working version deployed to heroku [http://social-railsapp.herokuapp.com](http://social-railsapp.herokuapp.com)
 
 ### UPDATE
 
 Since my cloudinary free tier hit a bandwidth overload. So had to switch to AWS. If you plan on deploying to production please set the AWS key and secret as environment variables. Or you can checkout the older version which uses cloudinary 
-https://github.com/sudharti/socify/tree/930b2f7c6a6eb6b442189dc6237765dbf16d461c
+https://github.com/sudharti/social-rails/tree/930b2f7c6a6eb6b442189dc6237765dbf16d461c
 
 ### UPDATE #2
 
@@ -28,8 +28,8 @@ Updated the Rails version to 5.0. Thanks to [@briankung](https://github.com/bria
 To set it up on your local machine here is what you need to do. Install Ruby & Rails. Clone this repo using the following command:
 
 ```
-git clone https://github.com/sudharti/socify
-cd socify
+git clone https://github.com/malachaifrazier/social-rails
+cd social-rails
 ```
 Then resolve dependencies using bundler:
 
@@ -58,7 +58,7 @@ rake fill:data
 
 This will create records with values from faker & populator gems. Also here are the test user credentials:
 
-* email: test@socify.com
+* email: test@social-rails.com
 * password: password
 
 ### Screenshots
@@ -76,7 +76,7 @@ This will create records with values from faker & populator gems. Also here are 
 * Send Pull Request
 
 ### Issues
-If you find any issue with the app please do raise an issue here https://github.com/sudharti/socify/issues
+If you find any issue with the app please do raise an issue here https://github.com/malachaifrazier/social-rails/issues
 
 ### License
-This project is Licensed under the [GNU GPL V2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html). See  [LICENSE](https://github.com/sudharti/socify/blob/master/LICENSE) for more info.
+This project is Licensed under the [GNU GPL V2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html). See  [LICENSE](https://github.com/sudharti/social-rails/blob/master/LICENSE) for more info.

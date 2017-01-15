@@ -1,3 +1,8 @@
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
+
 class PhotosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_photo, except: :create

@@ -1,6 +1,7 @@
-# Copyright (c) 2015, @sudharti(Sudharsanan Muralidharan)
-# Socify is an Open source Social network written in Ruby on Rails This file is licensed
-# under GNU GPL v2 or later. See the LICENSE.
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
 
 class Follow < ActiveRecord::Base
   include Shared::Callbacks
@@ -9,8 +10,8 @@ class Follow < ActiveRecord::Base
   extend ActsAsFollower::FollowScopes
 
   # NOTE: Follows belong to the "followable" interface, and also to followers
-  belongs_to :followable, :polymorphic => true
-  belongs_to :follower,   :polymorphic => true
+  belongs_to :followable, polymorphic: true
+  belongs_to :follower,   polymorphic: true
 
   def block!
     self.update_attribute(:blocked, true)
@@ -21,4 +22,5 @@ class Follow < ActiveRecord::Base
 
   validates_presence_of :follower
   validates_presence_of :followable
+
 end
