@@ -44,7 +44,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new post as @post" do
-      get :new, {content: Populator.sentences(2..4)}
+      get :new, params: {content: Populator.sentences(2..4)}
       expect(assigns(:post)).to be_a_new(Post)
     end
   end
