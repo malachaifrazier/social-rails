@@ -1,5 +1,7 @@
 [![Heroku](http://heroku-badge.herokuapp.com/?app=social-railsapp&style=flat)](http://social-railsapp.herokuapp.com)
 
+[ ![Codeship Status for malachaifrazier/social-rails](https://app.codeship.com/projects/5b3f69b0-bcf0-0134-71bb-4ec7667e0bdc/status?branch=master)](https://app.codeship.com/projects/195946)
+
 [![Code Climate](https://codeclimate.com/github/malachaifrazier/social-rails/badges/gpa.svg)](https://codeclimate.com/github/malachaifrazier/social-rails)
 
 [![Issue Count](https://codeclimate.com/github/malachaifrazier/social-rails/badges/issue_count.svg)](https://codeclimate.com/github/malachaifrazier/social-rails)
