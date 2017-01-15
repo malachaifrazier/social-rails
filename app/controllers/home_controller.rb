@@ -11,18 +11,22 @@ class HomeController < ApplicationController
   include Shared::Photos
 
   def index
-    @post = Post.new
+    @post    = Post.new
     @friends = @user.all_following
-    @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc)
+    @activities = PublicActivity::Activity.where(owner_id: [@friends, @user]).order(created_at: :desc)
                   .paginate(page: params[:page], per_page: 10)
   end
 
   def front
-    @activities = PublicActivity::Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @activities = PublicActivity::Activity
+      .order(created_at: :desc)
+      .paginate(page: params[:page], per_page: 10)
   end
 
   def find_friends
     @friends = @user.all_following
-    @users = User.where.not(id: @friends.unshift(@user)).paginate(page: params[:page])
+    @users   = User.where.not(
+      id: @friends.unshift(@user)
+    ).paginate(page: params[:page])
   end
 end
