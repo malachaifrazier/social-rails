@@ -20,8 +20,8 @@ $(document).ready(function() {
     limit: 15
   });
 
-  $('.post_form').submit(function() {
-    $('#post_content').val($('#post-content').html());
-    $('#post-content').html('');
-  });
+  // $('#new_post').submit(function() {
+  //   $('#post_content').val($('#post-content').html());
+  //   $('#post-content').html('');
+  // });
 });
