@@ -67,6 +67,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.friendly.find_by(slug: params[:id])
-    # User.friendly.find_by(id: params[:id]) || User.friendly.find_by(slug: params[:id])
   end
 end

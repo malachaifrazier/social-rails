@@ -9,7 +9,11 @@ class PhotosController < ApplicationController
   respond_to :js
 
   def create
-    @photo = Photo.new(photo_params)
+    @photo = Photo.new(
+      file: params[:file],
+      title: params[:file].original_filename.split('.').first,
+      photo_album_id: params[:photo_album_id]
+    )
     @photo_album = PhotoAlbum.find(params[:photo_album_id])
 
     respond_to do |format|
@@ -27,7 +31,16 @@ class PhotosController < ApplicationController
   end
 
   def update
-    @photo.update(photo_params)
+    # @photo.update(params.except(:action, :controller, :commit, 'success_action_status', 'utf8', 'X-Requested-With'))
+    respond_to do |format|
+      if @photo.update_attributes(photo_params)
+        format.html { redirect_to :back, status: 301, notice: 'Photo was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render :edit }
+        format.json { render json: @photo.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
@@ -43,7 +56,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.permit(:id, :file, :title, :photo_album_id)
+    params.require(:photo).permit(:id, :file, :title, :photo_album_id)
   end
 
   def set_photo
