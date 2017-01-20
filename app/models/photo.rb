@@ -16,4 +16,8 @@ class Photo < ActiveRecord::Base
   end
 
   mount_uploader :file, PhotoUploader
+
+  def truncated_title
+    title.present? ? title.truncate(20) : ''
+  end
 end
