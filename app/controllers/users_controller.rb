@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :bio, :avatar, :cover,
-                                 :sex, :dob, :location, :phone_number)
+                    :name, :sex, :dob, :location, :phone_number, :avatar_cache)
   end
 
   def check_ownership
@@ -66,6 +66,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(slug: params[:id])
+    @user = User.friendly.find_by(slug: params[:id])
+    # User.friendly.find_by(id: params[:id]) || User.friendly.find_by(slug: params[:id])
   end
 end

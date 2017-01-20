@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed? || new_record? || slug.nil?
+  end
+
   def self.find_for_oauth(auth)
     user = User.where(email: auth.info.email).first
     if user
