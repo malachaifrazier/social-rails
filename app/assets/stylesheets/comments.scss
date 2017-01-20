@@ -21,4 +21,9 @@
   .comment-content {
     margin-top: 10px;
   }
+
+  .comment {
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 1em;
+  }
 }

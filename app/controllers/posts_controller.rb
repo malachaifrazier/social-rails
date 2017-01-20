@@ -6,6 +6,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
   respond_to :html, :js
 
   def show
@@ -31,9 +32,16 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    @friends    = current_user.all_following
+    @activities = PublicActivity::Activity
+                  .where(owner_id: [@friends, current_user])
+                  .order(created_at: :desc)
+                  .paginate(page: params[:page], per_page: 10)
+
     respond_to do |format|
-      format.js
       format.html { redirect_to root_path }
+      format.json { head :no_content }
+      format.js   {}#{ render template: 'posts/destroy.js.erb' }
     end
   end
 

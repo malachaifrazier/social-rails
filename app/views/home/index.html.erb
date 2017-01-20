@@ -1,17 +1,22 @@
 <div class="row">
-  <%= render 'shared/user_board' %>
+  <%= render "shared/user_board" %>
   <div class="stream">
-    <div class="new-resource">
-      <%= render 'posts/form' %>
+    <div class="new-resource panel panel-primary">
+      <div class="panel-body">
+        <%= render "posts/form" %>
+      </div>
     </div>
-    <div id="activities" class="resources-block">
-      <h4 class="underlined">STREAM</h4>
-      <% if @activities.empty? %>
-        <%= render('shared/no_resource', resources: 'Activities') %>
-      <% else %>
-        <%= render_activities(@activities, layout: '/shared/activity') %>
-      <% end %>
+    <div id="activities" class="resources-block panel panel-primary">
+      <div class="panel-body">
+        <h4 class="underlined">STREAM</h4>
+        <% if @activities.empty? %>
+          <%= render('shared/no_resource', resources: 'Activities') %>
+        <% else %>
+          <%= render_activities(@activities, layout: '/shared/activity') %>
+        <% end %>
+      </div>
     </div>
+
     <div class="pagination-block">
       <%= render 'shared/paginate', resources: @activities %>
     </div>

@@ -179,7 +179,7 @@ div.editable {
 }
 
 .commentable {
-  @extend .well;
+  // @extend .well;
   margin-top: 20px;
 
   .comments-block {

@@ -1,5 +1,7 @@
 <% if activity_resources_exist?(activity) %>
-  <div id="activity-<%= activity.id %>" class="activity">
-    <%= render_activity(activity) %>
+  <div id="activity-<%= activity.id %>" class="activity panel panel-default">
+    <div class="panel-body">
+      <%= render_activity(activity) %>
+    </div>
   </div>
 <% end %>
