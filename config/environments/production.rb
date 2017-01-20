@@ -88,7 +88,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.delivery_method             = :smtp
   config.action_mailer.perform_deliveries          = true
-  config.action_mailer.default_url_options         = { host: 'social-rails.herokuapp.com' }
+  config.action_mailer.default_url_options         = { host: 'social-rails-demo.herokuapp.com' }
 
   # ActionMailer::Base.smtp_settings = {
   #   :address              => 'smtp.sendgrid.net',
