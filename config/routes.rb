@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :posts,    except: [:new, :index]
   resources :events,   except: [:edit, :update]
   resources :comments, only: [:create, :destroy]
-  resources :photos,   only: [:create, :destroy]
+  resources :photos,   only: [:create, :destroy, :update]
 
   authenticated :user do
     root to: 'home#index', as: 'home'
