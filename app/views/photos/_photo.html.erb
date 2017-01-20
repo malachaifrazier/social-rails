@@ -9,7 +9,7 @@
           <% if photo.title.blank? %>
             Untitled
           <% else %>
-            <%= photo.title %>
+            <%= photo.truncated_title %>
           <% end %>
         </h5>
       </div>
@@ -19,4 +19,4 @@
     </div>
   </div>
 </div>
-<%= render 'photos/edit_form' %>
+<%= render 'photos/edit_form', photo: photo %>
