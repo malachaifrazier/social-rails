@@ -1,2 +1,2 @@
-$(".activity #post-<%= @post.id %>").parent().remove();
+$(".activity #post-<%= @post.id %>").parents(".activity.panel.panel-default").remove();
 <%= render "posts/save", action: 'deleted!' %>

@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     @post    = Post.new
     @friends = @user.all_following
     @activities = PublicActivity::Activity.where(owner_id: [@friends, @user]).order(created_at: :desc)
-                  .paginate(page: params[:page], per_page: 10)
+                  .paginate(page: params[:page], per_page: 15)
   end
 
   def front
