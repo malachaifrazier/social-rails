@@ -16,9 +16,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to root_path, notice: "Post created successfully!"
-    else
-      redirect_to root_path, notice: @post.errors.full_messages.first
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.json { head :no_content }
+        format.js   {}
+      end
     end
   end
 
@@ -41,7 +43,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to root_path }
       format.json { head :no_content }
-      format.js   {}#{ render template: 'posts/destroy.js.erb' }
+      format.js   {}
     end
   end
 

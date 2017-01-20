@@ -1,8 +1,8 @@
 <% if @post.errors.any? %>
   <% @post.errors.full_messages.each do |message| %>
-    alertify.success("<%= message.html_safe %>");
+    alertify.error("<%= message.html_safe %>");
   <% end %>
 <% else %>
   $('#activities').append("<%= j render_activities(@activities, layout: '/shared/activity') %>");
-  alertify.success('Post successfully deleted!');
+  alertify.success('Post successfully <%= action %>');
 <% end %>
