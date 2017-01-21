@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <%= render 'shared/navbar' %>
     <%= render 'shared/mentions' %>
     <% unless notice.blank? %>

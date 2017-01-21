@@ -1,2 +1,8 @@
-$("#<%= @commentable_type.underscore.dasherize %>-<%= @commentable.id %> .comments").prepend("<%=j render(@comment, is_activity: false) %>");
-$("#comment_text").val("");
+<% if @comment.persisted? %>
+  $("#<%= @commentable_type.underscore.dasherize %>-<%= @commentable.id %> .comments").prepend("<%=j render(@comment, is_activity: false) %>");
+  $("#comment_text").val("");
+  alertify.success("Comment created successfully!");
+<% else %>
+  alertify.error("<%= @comment.errors.full_messages.first %>");
+<% end %>
+

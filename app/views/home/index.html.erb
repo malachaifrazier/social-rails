@@ -6,8 +6,8 @@
         <%= render "posts/form" %>
       </div>
     </div>
-    <div id="activities" class="resources-block panel panel-primary">
-      <div class="panel-body">
+    <div id="activities" class="resources-block">
+      <div class="">
         <h4 class="underlined">STREAM</h4>
         <% if @activities.empty? %>
           <%= render('shared/no_resource', resources: 'Activities') %>

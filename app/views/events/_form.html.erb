@@ -1,17 +1,28 @@
-<%= form_for(@event) do |f| %>
-  <div class="form-group">
-    <%= f.label :event_name %>
-    <%= f.text_field :name, autofocus: true, placeholder: 'Event Name', class: 'form-control' %>
+<div class="panel panel-primary">
+  <div class="panel-header">
+    <h4 class="underlined">CREATE EVENT</h4>
   </div>
-  <div class="form-group">
-    <%= f.label :date %>
-    <%= f.text_field :when, placeholder: 'When is it?', class: 'form-control' %>
+  <div class="panel-body">
+    <%= simple_form_for(@event, input_html: {class: "form", multipart: true}) do |f| %>
+      <div class="form-group">
+        <%= f.input :name, autofocus: true, label: "Event Name",
+         placeholder: 'Event Name', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :when, label: "Date", placeholder: 'When is it?',
+         class: 'form-control', as: :datetime %>
+      </div>
+
+      <div class="form-group">
+        <%= f.input :where, label: "Location",
+         placeholder: 'Where is it being held?', class: 'form-control' %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit :create, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= f.label :location %>
-    <%= f.text_field :where, placeholder: 'Where is it being held?', class: 'form-control' %>
-  </div>
-  <div class="form-actions">
-    <%= f.submit :create, class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>
+
