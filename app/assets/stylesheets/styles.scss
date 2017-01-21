@@ -143,11 +143,11 @@ input[type="text"],
 textarea {
   height: auto;
   padding: 10px 17px;
-  box-shadow: none !important;
-  border: 1px solid #ccc !important;
+  // box-shadow: none !important;
+  // border: 1px solid #ccc !important;
 
   &:focus {
-    border: 1px solid #888 !important;
+    // border: 1px solid #888 !important;
   };
 }
 
@@ -209,4 +209,18 @@ div.editable {
   button {
     cursor: pointer;
   }
+}
+
+.affix {
+  top: 5em;
+  width: 20%;
+}
+
+.affix-top {
+  width: 100%;
+}
+
+.affix-bottom {
+  position: absolute;
+  // width: 100%;
 }
