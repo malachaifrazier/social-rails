@@ -15,14 +15,18 @@ class UsersController < ApplicationController
   def show
     @activities = PublicActivity::Activity.where(owner: @user).
       order(created_at: :desc).
-      paginate(page: params[:page], per_page: 10)
+      paginate(page: params[:page], per_page: 10).uniq
   end
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user)
-    else
-      render :edit
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.json { head :no_content }
+        format.js   {}
+      end
+    # else
+    #   render :edit
     end
   end
 
@@ -58,7 +62,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :bio, :avatar, :cover,
-                    :name, :sex, :dob, :location, :phone_number, :avatar_cache)
+                    :name, :sex, :dob, :location, :phone_number, :avatar_cache,
+                    :cover_cache)
   end
 
   def check_ownership

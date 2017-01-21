@@ -18,11 +18,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment_id = params[:id]
-    @comment    = current_user.comments.find(comment_id)
+    @comment    = current_user.comments.find(@comment_id)
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to root_path }
       format.json { head :no_content }
+      format.js   {}
     end
   end
 
