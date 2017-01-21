@@ -9,10 +9,11 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   counter_culture :user
+
   acts_as_votable
   acts_as_commentable
 
-  mount_uploader :attachment, AvatarUploader
+  mount_uploader :attachment, AttachmentUploader
 
   validates_presence_of :content
   validates_presence_of :user
