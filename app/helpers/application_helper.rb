@@ -11,4 +11,5 @@ module ApplicationHelper
   def activity_resources_exist?(activity)
     activity && activity.trackable && activity.owner
   end
+
 end
