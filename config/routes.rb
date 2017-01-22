@@ -34,4 +34,8 @@ Rails.application.routes.draw do
   post :update_photo, to: 'photos#update', as: :update_photo
   post :update_photo_album, to: 'photo_albums#update', as: :update_photo_album
 
+  # match 'auth/:provider/callback', to: 'users/omniauth_callbacks#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  # match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+
 end
