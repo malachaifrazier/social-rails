@@ -25,8 +25,6 @@ class UsersController < ApplicationController
         format.json { head :no_content }
         format.js   {}
       end
-    # else
-    #   render :edit
     end
   end
 
@@ -63,7 +61,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :bio, :avatar, :cover,
                     :name, :sex, :dob, :location, :phone_number, :avatar_cache,
-                    :cover_cache)
+                    :cover_cache, :email)
   end
 
   def check_ownership
