@@ -1,5 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
 $(document).ready(function() {
   if ($(".pagination").size() > 0) {
     $(".pagination").hide();
@@ -20,8 +18,8 @@ $(document).ready(function() {
     limit: 15
   });
 
-  $('.post_form').submit(function() {
-    $('#post_content').val($('#post-content').html());
-    $('#post-content').html('');
-  });
+  // $('#new_post').submit(function() {
+  //   $('#post_content').val($('#post-content').html());
+  //   $('#post-content').html('');
+  // });
 });

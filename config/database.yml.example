@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  encoding: UTF-8
+  database: social_rails_development
+  host: localhost
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: UTF-8
+  database: social_rails_test
+  host: localhost
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: UTF-8
+  database: social_rails_production
+  host: localhost
+  pool: 5

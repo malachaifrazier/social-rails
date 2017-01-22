@@ -1,0 +1,9 @@
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    alertify.error("<%= message.html_safe %>");
+  <% end %>
+<% else %>
+  window.location.href = "<%= user_path(@user) %>";
+  alertify.success('User updated successfully!');
+<% end %>
+

@@ -6,16 +6,20 @@
       </div>
       <div class="modal-body">
         <h4 class="underlined">EDIT PHOTO</h4>
-        <%= form_tag update_photo_path, remote: true do %>
+        <%= simple_form_for(photo, input_html: {multipart: true}) do |f| %>
           <%= hidden_field_tag :id, nil, id: 'photo-id' %>
+          <%#= f.input :id, as: :hidden,
+            placeholder: photo.id,
+            input_html: { id: 'photo-id', value: photo.id } %>
           <div class="form-group">
-            <%= text_field_tag :title, nil, id: 'photo-title', class: 'form-control', autofocus: true, placeholder: 'Photo Title' %>
+            <%= f.input :title, label: false, autofocus: true,
+              placeholder: 'Photo Title', input_html: { id: 'photo-title', class: "form-control" } %>
           </div>
           <img id="edit-photo-img" src="" alt="">
           <br>
           <br>
           <div class="form-group">
-            <%= submit_tag :update, class: 'btn btn-primary'%>
+            <%= f.button :submit, class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>

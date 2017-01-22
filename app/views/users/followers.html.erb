@@ -1,7 +1,7 @@
 <div class="row">
   <%= render 'shared/user_board' %>
-  <div class="stream">
-    <div id="followers" class="resources-block">
+  <div class="stream panel panel-primary">
+    <div id="followers" class="resources-block panel-body">
       <h4 class="underlined">FOLLOWERS</h4>
       <%= render(@followers) || render('shared/no_resource', resources: 'Followers')  %>
     </div>

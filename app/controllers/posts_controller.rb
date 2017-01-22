@@ -1,21 +1,27 @@
-# Copyright (c) 2015, @sudharti(Sudharsanan Muralidharan)
-# Socify is an Open source Social network written in Ruby on Rails This file is licensed
-# under GNU GPL v2 or later. See the LICENSE.
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
 
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, only: [:create, :update]
+  layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
+  respond_to :html, :js
 
   def show
-    @comments = @post.comments.all
+    @comments = @post.comments.order('created_at DESC')
   end
 
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to root_path
-    else
-      redirect_to root_path, notice: @post.errors.full_messages.first
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.json { head :no_content }
+        format.js   {}
+      end
     end
   end
 
@@ -29,9 +35,16 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    @friends    = current_user.all_following
+    @activities = PublicActivity::Activity
+                  .where(owner_id: [@friends, current_user])
+                  .order(created_at: :desc)
+                  .paginate(page: params[:page], per_page: 10)
+
     respond_to do |format|
-      format.js
       format.html { redirect_to root_path }
+      format.json { head :no_content }
+      format.js   {}
     end
   end
 
@@ -42,6 +55,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :attachment)
+    params.require(:post).permit(:content, :attachment, :content_html, :user_id)
   end
 end

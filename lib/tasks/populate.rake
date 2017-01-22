@@ -16,26 +16,34 @@ namespace :fill do
     password = 'socify'
 
     User.populate 20 do |user|
-      user.name = Faker::Name.name
+      user.name       = Faker::Name.name
       user.first_name = Faker::Name.first_name
-      user.last_name = Faker::Name.last_name
-      user.email = Faker::Internet.email
-      user.sex = genders
-      user.dob = Faker::Date.between(45.years.ago, 15.years.ago)
-      user.phone_number = Faker::PhoneNumber.cell_phone
+      user.last_name  = Faker::Name.last_name
+      user.email      = Faker::Internet.email
+      user.sex        = genders
+      user.dob        = Faker::Date.between(45.years.ago, 15.years.ago)
+
+      user.phone_number       = Faker::PhoneNumber.cell_phone
       user.encrypted_password = User.new(password: password).encrypted_password
-      user.confirmed_at = DateTime.now
-      user.sign_in_count = 0
-      user.posts_count = 0
+      user.confirmed_at       = DateTime.now
+      user.sign_in_count      = 0
+      user.posts_count        = 0
       user.photo_albums_count = 0
-      user.profile_complete = true
+      user.profile_complete   = true
       puts "created user #{user.name}"
     end
 
-    user = User.new(name: 'Rails', first_name: 'Rails', last_name: 'Test', email: 'test@socify.com', sex: 'female', password: 'password')
+    user = User.new(
+      name: 'Rails',
+      first_name: 'Rails',
+      last_name: 'Test',
+      email: 'test@social-rails.com',
+      sex: 'female',
+      password: 'password'
+    )
     user.skip_confirmation!
     user.save!
-    puts 'Created test user with email=test@socify.com and password=password'
+    puts 'Created test user with email=test@social-rails.com and password=password'
 
     puts 'Generate Friendly id slug for users'
     puts '==================================='
@@ -46,9 +54,9 @@ namespace :fill do
     users = User.all
 
     15.times do
-      post = Post.new
+      post         = Post.new
       post.content = Populator.sentences(2..4)
-      post.user = users.sample
+      post.user    = users.sample
       post.save!
       puts "created post #{post.id}"
     end
@@ -59,11 +67,12 @@ namespace :fill do
     posts = Post.all
 
     15.times do
-      post = posts.sample
-      user = users.sample
+      post    = posts.sample
+      user    = users.sample
       comment = post.comments.new
+
       comment.comment = Populator.sentences(1)
-      comment.user = user
+      comment.user    = user
       comment.save
       puts "user #{user.name} commented on post #{post.id}"
     end
@@ -72,7 +81,7 @@ namespace :fill do
     puts '==============='
 
     15.times do
-      event = Event.new
+      event      = Event.new
       event.name = Populator.words(1..3).titleize
       event.when = Faker::Date.between(2.years.ago, 1.day.from_now)
       event.user = users.sample
@@ -96,7 +105,7 @@ namespace :fill do
 
     15.times do
       event = events.sample
-      user = users.sample
+      user  = users.sample
       event.liked_by user
       puts "event #{event.id} liked by user #{user.name}"
     end
@@ -105,12 +114,13 @@ namespace :fill do
     puts '============================='
 
     15.times do
-      event = events.sample
-      user = users.sample
+      event   = events.sample
+      user    = users.sample
       comment = event.comments.new
+
       comment.commentable_type = 'Event'
-      comment.comment = Populator.sentences(1)
-      comment.user = user
+      comment.comment          = Populator.sentences(1)
+      comment.user            = user
       comment.save
       puts "user #{user.name} commented on event #{event.id}"
     end

@@ -1,0 +1,6 @@
+<% if @post.persisted? %>
+  window.location.href = "<%= root_path %>";
+  alertify.success("Post created successfully!");
+<% else %>
+  alertify.error("<%= @post.errors.full_messages.first %>");
+<% end %>

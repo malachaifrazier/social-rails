@@ -1,6 +1,7 @@
-# Copyright (c) 2015, @sudharti(Sudharsanan Muralidharan)
-# Socify is an Open source Social network written in Ruby on Rails This file is licensed
-# under GNU GPL v2 or later. See the LICENSE.
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
 
 class CommentsController < ApplicationController
   before_action :authenticate_user!
@@ -16,9 +17,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = current_user.comments.find(params[:id])
     @comment_id = params[:id]
+    @comment    = current_user.comments.find(@comment_id)
     @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { head :no_content }
+      format.js   {}
+    end
   end
 
   private

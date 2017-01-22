@@ -2,12 +2,11 @@ class PhotoAlbumsController < ApplicationController
   before_action :set_user
   before_action :authenticate_user!
   before_action :set_photo_album, only: [:show, :update, :destroy]
-
   respond_to :js, :html
 
   def index
     if params[:user_id]
-      @user = User.find_by(slug: params[:user_id])
+      @user = User.friendly.find_by(slug: params[:id])
     else
       @user = current_user
     end

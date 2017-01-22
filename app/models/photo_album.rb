@@ -1,3 +1,8 @@
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
+
 class PhotoAlbum < ActiveRecord::Base
   counter_culture :user
   belongs_to :user
@@ -13,8 +18,6 @@ class PhotoAlbum < ActiveRecord::Base
 
   include PublicActivity::Model
   tracked only: [:create], owner: proc { |_controller, model| model.user }
-
-  default_scope -> { order('created_at DESC') }
 
   self.per_page = 10
 

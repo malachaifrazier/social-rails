@@ -1,6 +1,7 @@
-# Copyright (c) 2015, @sudharti(Sudharsanan Muralidharan)
-# Socify is an Open source Social network written in Ruby on Rails This file is licensed
-# under GNU GPL v2 or later. See the LICENSE.
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
 
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:complete_profile, :set_password]
@@ -12,14 +13,20 @@ class UsersController < ApplicationController
   include Shared::Photos
 
   def show
-    @activities = PublicActivity::Activity.where(owner: @user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @activities = PublicActivity::Activity.where(owner: @user).
+      order(created_at: :desc).
+      paginate(page: params[:page], per_page: 10).uniq
   end
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user)
-    else
-      render :edit
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.json { head :no_content }
+        format.js   {}
+      end
+    # else
+    #   render :edit
     end
   end
 
@@ -40,9 +47,9 @@ class UsersController < ApplicationController
   end
 
   def set_password
-    @user.password = params[:password]
+    @user.password              = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-    @user.profile_complete = true
+    @user.profile_complete      = true
     if @user.save
       sign_in(@user)
       redirect_to root_path
@@ -55,7 +62,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :bio, :avatar, :cover,
-                                 :sex, :dob, :location, :phone_number)
+                    :name, :sex, :dob, :location, :phone_number, :avatar_cache,
+                    :cover_cache)
   end
 
   def check_ownership
@@ -63,6 +71,6 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(slug: params[:id])
+    @user = User.friendly.find_by(slug: params[:id])
   end
 end

@@ -7,8 +7,7 @@ class Users::OmniauthCallbacksController < ApplicationController
     authenticate_user(:google)
   end
 
-  private
-
+private
   def authenticate_user(_provider)
     auth = request.env['omniauth.auth']
     user = User.find_for_oauth(auth)
@@ -18,6 +17,6 @@ class Users::OmniauthCallbacksController < ApplicationController
       redirect_to root_path
     else
       redirect_to complete_profile_user_path(user)
-     end
+    end
   end
 end

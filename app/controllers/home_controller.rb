@@ -1,6 +1,7 @@
-# Copyright (c) 2015, @sudharti(Sudharsanan Muralidharan)
-# Socify is an Open source Social network written in Ruby on Rails This file is licensed
-# under GNU GPL v2 or later. See the LICENSE.
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
 
 class HomeController < ApplicationController
   before_action :set_user, except: :front
@@ -10,18 +11,22 @@ class HomeController < ApplicationController
   include Shared::Photos
 
   def index
-    @post = Post.new
+    @post    = Post.new
     @friends = @user.all_following
-    @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc)
-                  .paginate(page: params[:page], per_page: 10)
+    @activities = PublicActivity::Activity.where(owner_id: [@friends, @user]).order(created_at: :desc)
+                  .paginate(page: params[:page], per_page: 15).uniq
   end
 
   def front
-    @activities = PublicActivity::Activity.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @activities = PublicActivity::Activity
+      .order(created_at: :desc)
+      .paginate(page: params[:page], per_page: 10)
   end
 
   def find_friends
     @friends = @user.all_following
-    @users = User.where.not(id: @friends.unshift(@user)).paginate(page: params[:page])
+    @users   = User.where.not(
+      id: @friends.unshift(@user)
+    ).paginate(page: params[:page])
   end
 end

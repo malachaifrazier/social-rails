@@ -1,6 +1,7 @@
-# Copyright (c) 2015, @sudharti(Sudharsanan Muralidharan)
-# Socify is an Open source Social network written in Ruby on Rails This file is licensed
-# under GNU GPL v2 or later. See the LICENSE.
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -28,6 +29,10 @@ class User < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed? || new_record? || slug.nil?
+  end
 
   def self.find_for_oauth(auth)
     user = User.where(email: auth.info.email).first

@@ -1,3 +1,8 @@
+# Social-Rails is a fork of Socify @sudharti(Sudharsanan Muralidharan)
+# Social-Rails is an Open source Social network written in Ruby on Rails.
+# @captcussa (Malachai Frazier)
+# This file is licensed under GNU GPL v2 or later. See the LICENSE.
+
 class Photo < ActiveRecord::Base
   counter_culture :photo_album
   belongs_to :photo_album
@@ -11,4 +16,8 @@ class Photo < ActiveRecord::Base
   end
 
   mount_uploader :file, PhotoUploader
+
+  def truncated_title
+    title.present? ? title.truncate(20) : ''
+  end
 end

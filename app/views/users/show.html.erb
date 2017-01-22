@@ -1,10 +1,10 @@
 <%= render 'shared/cover', user: @user %>
 <br>
 <div id="user-<%= @user.id %>" class="row">
-  <%= render 'shared/user_board' %>
+  <%= render "shared/user_board" %>
   <div class="stream">
     <div id="activities" class="resources-block">
-      <h4 class="underlined">USER STREAM</h4>
+      <!-- <h4 class="underlined text-uppercase">User Stream</h4> -->
       <% if @activities.empty? %>
         <div class="well">
           <%= render('shared/no_resource', resources: 'Activities') %>
@@ -17,9 +17,10 @@
       <%= render 'shared/paginate', resources: @activities %>
     </div>
   </div>
+
   <% if is_current_user?(@user) %>
     <div id="sidebar">
-      <div id="links" class="list-group">
+      <div id="links" class="list-group panel panel-primary">
         <%= link_to edit_user_path(@user), class: 'list-group-item' do %>
           <i class="icon-pencil"></i> Edit Profile
         <% end %>
@@ -32,11 +33,19 @@
         <%= link_to followers_user_path(@user), class: 'list-group-item' do %>
           <i class="icon-user"></i> Followers
         <% end %>
-        <%= link_to deactivate_user_path(@user), class: 'list-group-item' do %>
-          <i class="icon-trash"></i>Deactivate
-        <% end %>
+        <%#= link_to deactivate_user_path(@user), class: 'list-group-item' do %>
+          <!-- <i class="icon-trash"></i>Deactivate -->
+        <%# end %>
       </div>
+
+      <% if controller_name != 'users' %>
+        <%= render 'shared/links', page: page %>
+      <% end %>
+      <% if controller_name == 'newsfeed' || controller_name == 'users' %>
+        <%= render 'shared/gallery' %>
+      <% end %>
     </div>
   <% end %>
-  <%= render 'shared/sidebar', page: 'user' %>
+
+  <%= render 'shared/sidebar', page: 'user' unless is_current_user?(@user) %>
 </div>

@@ -6,7 +6,6 @@
 
 *.rbc
 capybara-*.html
-.rspec
 /log
 /tmp
 /db/*.sqlite3
@@ -41,3 +40,11 @@ config/initializers/secret_token.rb
 bower.json
 # Ignore pow environment settings
 .powenv
+
+# Mac .DS_Store files
+*.DS_Store
+.DS_Store
+
+# Ignore application configuration
+/config/application.yml
+/config/database.yml

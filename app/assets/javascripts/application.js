@@ -23,11 +23,14 @@
 
 $(document).ready(function(){
   $("#event_when").datetimepicker({
-    format:'Y/m/d H:i'
+    format:'Y/m/d H:i',
+    yearRange: '-70:-18'
   });
+
   $("#user_dob").datetimepicker({
     timepicker:false,
     format:'Y/m/d',
-    maxDate:'0'
+    maxDate:'0',
   });
+
 });
