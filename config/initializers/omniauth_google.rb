@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, Rails.application.secrets.google_id, Rails.application.secrets.google_secret
+  provider :google_oauth2, Figaro.env.google_id, Figaro.env.google_secret
   {
     name: 'google',
     scope: 'email, profile',
