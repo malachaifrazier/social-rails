@@ -5,10 +5,7 @@ RSpec.describe PostsController, type: :controller do
   let(:_post) { create(:post, user: user) }
 
   let(:valid_attributes) {
-    {
-      content: Populator.sentences(2..4),
-      # attachment: post.attachment,
-    }
+    { content: Populator.sentences(2..4) }
   }
 
   let(:invalid_attributes) {
@@ -47,31 +44,22 @@ RSpec.describe PostsController, type: :controller do
     context "with valid params" do
       it "creates a new Post" do
         expect {
-          post :create, params: {post: valid_attributes}
+          post :create, xhr: true, params: {post: valid_attributes}
         }.to change(Post, :count).by(1)
       end
 
       it "assigns a newly created post as @post" do
-        post :create, params: {post: valid_attributes}
+        post :create, xhr: true, params: {post: valid_attributes}
         expect(assigns(:post)).to be_a(Post)
         expect(assigns(:post)).to be_persisted
-      end
-
-      it "redirects to the created post" do
-        post :create, params: {post: valid_attributes}
-        expect(response).to redirect_to(root_path)
+        expect(response).to be_successful
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved post as @post" do
-        post :create, params: {post: invalid_attributes}
+        post :create, xhr: true, params: {post: invalid_attributes}
         expect(assigns(:post)).to be_a_new(Post)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, params: {post: invalid_attributes}
-        expect(response).to redirect_to(root_path)
       end
     end
   end
@@ -85,11 +73,6 @@ RSpec.describe PostsController, type: :controller do
       expect {
         delete :destroy, params: {id: @post.to_param}
       }.to change(user.posts, :count).by(-1)
-    end
-
-    it "redirects to the post list" do
-      delete :destroy, params: {id: @post.to_param}
-      expect(response).to redirect_to(root_path)
     end
   end
 
