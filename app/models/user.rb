@@ -35,13 +35,20 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_oauth(auth)
-    user = User.where(email: auth.info.email).first
+    user = User.find_by(email: auth.info.email)
     if user
-      user.update_attribute(:remote_avatar_url, auth.info.image.gsub('http://', 'https://'))
+      user.update_attribute(
+        :remote_avatar_url, auth.info.image.gsub('http://', 'https://')
+      ) unless user.avatar.file.exists?
     else
-      user = User.new(name: auth.info.name, first_name: auth.info.first_name, last_name: auth.info.last_name,
-                      email: auth.info.email, password: Devise.friendly_token[0, 20],
-                      remote_avatar_url: auth.info.image.gsub('http://', 'https://'))
+      user = User.new(
+        name: auth.info.name,
+        first_name: auth.info.first_name,
+        last_name: auth.info.last_name,
+        email: auth.info.email,
+        password: Devise.friendly_token[0, 20],
+        remote_avatar_url: auth.info.image.gsub('http://', 'https://')
+      )
       user.skip_confirmation!
       user.save
     end
