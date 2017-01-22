@@ -1,5 +1,5 @@
 <% if user.cover_url %>
   <div class="cover" style="background-image: url(<%= user.cover_url.to_s %>);"></div>
 <% else %>
-  <div class="cover" style="background-image: url(/assets/cover.png);"></div>
+  <div class="cover" style="background-image: url(image_path('cover.png'));"></div>
 <% end %>
