@@ -6,7 +6,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rails',          '5.0.0'
+gem 'rails',          '5.0.7.2'
 gem 'sass-rails',     '~> 5.0', '>= 5.0.6'
 gem 'uglifier',       '~> 3.0', '>= 3.0.4'
 gem 'rack',           '~> 2.0' #https://github.com/mkdynamic/omniauth-facebook/issues/247
