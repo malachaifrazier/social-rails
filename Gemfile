@@ -11,7 +11,7 @@ gem 'sass-rails',     '~> 5.0', '>= 5.0.6'
 gem 'uglifier',       '~> 3.0', '>= 3.0.4'
 gem 'rack',           '~> 2.0' #https://github.com/mkdynamic/omniauth-facebook/issues/247
 
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7' # '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.4' # '~> 3.2.0'
 gem 'friendly_id',    '~> 5.2' # '~> 5.0'
 gem 'will_paginate',  '~> 3.1', '>= 3.1.5'
 
