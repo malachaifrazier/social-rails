@@ -51,7 +51,7 @@ GEM
     auto_html (1.6.4)
       redcarpet (~> 3.1)
       rinku (~> 1.5.0)
-    autoprefixer-rails (6.6.1)
+    autoprefixer-rails (9.8.6)
       execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
